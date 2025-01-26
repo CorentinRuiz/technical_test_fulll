@@ -1,15 +1,27 @@
 {
-    "name": "project",
-    "version": "1.0.0",
-    "license": "proprietary",
-    "devDependencies": {
-      "@cucumber/cucumber": "^8.3.0",
-      "@types/cucumber": "^6.0.1",
-      "@types/node": "^14.0.27",
-      "typescript": "^4.5.4"
-    },
-    "scripts": {
-      "test": "cucumber-js --profile default"
-    }
+  "name": "project",
+  "version": "1.0.0",
+  "license": "proprietary",
+  "dependencies": {
+    "axios": "^1.7.9",
+    "commander": "^9.4.0",
+    "express": "^4.21.2",
+    "mongoose": "^6.0.0"
+  },
+  "devDependencies": {
+    "@cucumber/cucumber": "^11.2.0",
+    "@types/chai": "^5.0.1",
+    "@types/cucumber": "^6.0.1",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.10",
+    "chai": "^5.1.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "npm run build && node dist/index.js",
+    "cli": "ts-node CLI/CLI.ts",
+    "test": "cucumber-js --require tests/step_definitions/**/*.js tests/features/**/*.feature"
   }
-  
+}
