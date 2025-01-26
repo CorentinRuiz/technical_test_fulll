@@ -1,5 +1,6 @@
 import { Fleet } from "../../Domain/model/fleet.entity";
 
+// Repository to handle fleets with local storage
 class FleetRepository {
   private static instance: FleetRepository;
   private fleets: Fleet[] = [];

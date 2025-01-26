@@ -2,7 +2,9 @@ import express, { Request, Response } from 'express';
 import { FleetCommandService } from './App/command-services/fleet-command.service';
 import { FleetQueriesService } from './App/queries-services/fleet-queries.service';
 import { VehicleCommandService } from './App/command-services/vehicle-command.service';
+import { VehicleQueriesService } from './App/queries-services/vehicle-queries.service';
 
+// Main file to run the application with each routes
 const app = express();
 const port = 3000;
 
@@ -11,6 +13,7 @@ app.use(express.json());
 const fleetCommandService = new FleetCommandService();
 const vehicleCommandService = new VehicleCommandService();
 const fleetQueriesService = new FleetQueriesService();
+const vehicleQueriesService = new VehicleQueriesService();
 
 app.post('/fleet', async (req: Request, res: Response) => {
   const { userId } = req.body;
@@ -47,7 +50,7 @@ app.post('/fleet/:fleetID/vehicle/:plateNumber/park', async (req: Request, res: 
 app.get('/fleet/:fleetID/vehicle/:plateNumber/location', async (req: Request, res: Response) => {
   const { fleetID, plateNumber } = req.params;
   try {
-    const location = await fleetQueriesService.localizeVehicle(fleetID, plateNumber);
+    const location = await vehicleQueriesService.localizeVehicle(fleetID, plateNumber);
     res.status(200).send(location);
   } catch (error : any) {
     res.status(400).send({ error: error.message });

@@ -6,6 +6,7 @@ class VehicleQueriesService {
     private fleetRepository: FleetRepository = FleetRepository.getInstance()
   ) {}
 
+  // Get the location of a vehicle in a fleet
   localizeVehicle(fleetID: string, plateNumber: string): GeoLocation {
     const fleet = this.fleetRepository.getFleetById(fleetID);
 

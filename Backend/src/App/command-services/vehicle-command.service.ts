@@ -2,11 +2,13 @@ import { FleetRepository } from "../../Infra/repositories/fleet.repository";
 import { Vehicle } from "../../Domain/model/vehicle.entity";
 import { GeoLocation } from "../../Domain/value-objects/geolocation.vo";
 
+// Service to handle commands related to vehicles
 class VehicleCommandService {
   constructor(
     private fleetRepository: FleetRepository = FleetRepository.getInstance()
   ) {}
 
+  // Register a new vehicle to a fleet
   registerVehicle(fleetID: string, plateNumber: string): Vehicle {
     const vehicle = new Vehicle(plateNumber);
 
@@ -27,6 +29,7 @@ class VehicleCommandService {
     return vehicle;
   }
 
+  // Park a vehicle in a fleet
   parkVehicle(
     fleetID: string,
     plateNumber: string,
